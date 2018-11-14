@@ -26,11 +26,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Eli.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Auxiliary.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Eli.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
