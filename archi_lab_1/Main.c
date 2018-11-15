@@ -1,5 +1,6 @@
 
 #include "Auxiliary.h"
+#include "Exec.h"
 
 int main(int argc, char *argv[]) {
 	bool failed = false;
