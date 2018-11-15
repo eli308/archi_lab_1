@@ -4,6 +4,7 @@
 
 void ExecFlow(int *procimg, Instruction *inst, char *exeStr)
 {
+		
 	int halt = 0, inst_num=0;
 	while (!halt)
 	{

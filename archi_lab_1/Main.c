@@ -7,7 +7,6 @@ int main(int argc, char *argv[]) {
 	String memFilePath, traceFilePath, sramFilePath;
 	char exeStr[512];
 	int procImage[9] = { 0 }; // procimage[0-7] are regs 0-7. procimage[8]=pc reg
-	int inst_num = 0;
 	Instruction inst;
 
 	if (argc < 2) {
@@ -31,6 +30,8 @@ int main(int argc, char *argv[]) {
 	}
 	strncpy(traceFilePath, "trace.txt",10);
 	strncpy(sramFilePath, "sram_out.txt",13);
+
+	ExecFlow(procImage, &inst, exeStr); // this functions starts the program execution: execute the commands and print trace.
 	
 	//procImage=InitProcImage();  changed procimag to an array of int.
 
