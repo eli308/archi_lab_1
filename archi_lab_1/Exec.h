@@ -1,7 +1,7 @@
 #pragma once
 #ifndef EXEC_H
 #define EXEC_H
-
+#include "Auxiliary.h"
 void ExecFlow(int *procimg, Instruction *inst, char *exeStr);
 void MemToInst(int mem, Instruction *inst);
 void ExecuteCmd(int *procimg, Instruction *cmd, char *exeStr, int *inst_num, int *halt);
