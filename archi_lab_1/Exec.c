@@ -361,7 +361,7 @@ void LhiFunc(int *procimg, Instruction *cmd, char *exeSrt)
 
 }
 
-// Arithmetic funcs
+// Load Store funcs
 void LdFunc(int *procimg, Instruction *cmd, char *exeSrt)
 {
 	int mem_addr;
@@ -390,7 +390,7 @@ void StFunc(int *procimg, Instruction *cmd, char *exeSrt)
 	*(procimg + 8) = *(procimg + 8) + 1; // PC + 1
 }
 
-// flow control funcs
+// Flow control funcs
 void JltFunc(int *procimg, Instruction *cmd, char *exeSrt)
 {
 	int jump_taken = 0;
