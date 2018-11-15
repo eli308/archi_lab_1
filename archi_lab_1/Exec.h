@@ -28,6 +28,6 @@ void JneFunc(int *procimg, Instruction *cmd, char *exeSrt);
 void JinFunc(int *procimg, Instruction *cmd, char *exeSrt);
 
 //HALT
-void HltFunc(int *procimg, Instruction *cmd, char *exeSrt);
+void HltFunc(int *procimg, Instruction *cmd, char *exeSrt); 
 
 #endif
