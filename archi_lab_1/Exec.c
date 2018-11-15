@@ -469,4 +469,5 @@ void JinFunc(int *procimg, Instruction *cmd, char *exeSrt)
 void HltFunc(int *procimg, Instruction *cmd, char *exeSrt)
 {
 	sprintf(exeSrt, "EXEC: Halting");
+	*(procimg + 8) = *(procimg + 8) + 1; // PC + 1
 }
