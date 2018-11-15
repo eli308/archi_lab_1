@@ -121,9 +121,9 @@ void ExecuteCmd(int *procimg, Instruction *cmd, char *exeStr, int *inst_num, int
 		*halt = 1;
 		return;
 	}
-
-
-
+	// if reached here, there is a bad opcode
+	*(procimg + 8) = *(procimg + 8) + 1; // PC + 1 
+	strcpy(exeStr, "Bad Opcode, do nothing");
 }
 
 // Arithmetic funcs
