@@ -14,7 +14,7 @@ bool ExecFlow(int *procimg, Instruction *inst, char *exeStr,String traceFilePath
         MemToInst(Mem[*(procimg +8)], inst); // update instruction field
         // print trace func - david
         failed=TracePrint(traceFilePath,inst,procimg,inst_num);
-        ExecuteCmd(procimg, inst, exeStr, &inst_num, &halt);
+        ExecuteCmd(procimg, inst, exeStr, &halt);
         inst_num++; // instruction number increment
         //print exeStr - david
         failed=TraceCmdPrint(traceFilePath,exeStr);
