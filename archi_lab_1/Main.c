@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
     strncpy(traceFilePath, "trace.txt",10);
     strncpy(sramFilePath, "sram_out.txt",13);
 
-    failed=ExecFlow(procImage, &inst, exeStr,traceFilePath); // this functions starts the program execution: execute the commands and print trace.
+    failed=ExecFlow(procImage, &inst, exeStr,traceFilePath); // this function starts the program execution: execute the commands and print trace.
     if (failed == true) {
         return failed;
     }
