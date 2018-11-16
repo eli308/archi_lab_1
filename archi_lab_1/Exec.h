@@ -8,7 +8,7 @@
 #include "Auxiliary.h"
 bool ExecFlow(int *procimg, Instruction *inst, char *exeStr,String traceFilePath);
 void MemToInst(int mem, Instruction *inst);
-void ExecuteCmd(int *procimg, Instruction *cmd, char *exeStr, int *inst_num, int *halt);
+void ExecuteCmd(int *procimg, Instruction *cmd, char *exeStr, int *halt);
 
 // Arithmetic funcs
 void AddFunc(int *procimg, Instruction *cmd, char *exeSrt);
