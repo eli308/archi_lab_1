@@ -1,8 +1,12 @@
-#pragma once
-#ifndef EXEC_H
-#define EXEC_H
+//
+// Created by David Sriker on 16/11/2018.
+//
+
+#ifndef LAB1_ARCHLAB_EXEC_H
+#define LAB1_ARCHLAB_EXEC_H
+
 #include "Auxiliary.h"
-void ExecFlow(int *procimg, Instruction *inst, char *exeStr);
+bool ExecFlow(int *procimg, Instruction *inst, char *exeStr,String traceFilePath);
 void MemToInst(int mem, Instruction *inst);
 void ExecuteCmd(int *procimg, Instruction *cmd, char *exeStr, int *inst_num, int *halt);
 
@@ -28,6 +32,7 @@ void JneFunc(int *procimg, Instruction *cmd, char *exeSrt);
 void JinFunc(int *procimg, Instruction *cmd, char *exeSrt);
 
 //HALT
-void HltFunc(int *procimg, Instruction *cmd, char *exeSrt); 
+void HltFunc(int *procimg, Instruction *cmd, char *exeSrt);
 
-#endif
+
+#endif //LAB1_ARCHLAB_EXEC_H
