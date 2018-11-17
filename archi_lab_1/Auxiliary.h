@@ -52,24 +52,9 @@ typedef struct  Instruction_t {
     Int16			immediate;
 } Instruction;
 
-/* changed to array
-typedef struct ProcImag_t {
-	int pc;
-	int r0;
-	int r1;
-	int r2;
-	int r3;
-	int r4;
-	int r5;
-	int r6;
-	int r7;
-}ProcImag;
-*/
-
-
 Uint32	   Mem[MEMORY_SIZE];
 
-//ProcImag InitProcImage();   changed procimage to be an array of int.
+//function declerations
 bool MemoryParsing(String memFilePath);
 bool SramMemDump(String sramFilePath);
 bool TracePrint(String traceFilePath, Instruction* preformedInst, int *proccesImage, int instCount);

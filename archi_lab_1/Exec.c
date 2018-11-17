@@ -12,11 +12,11 @@ bool ExecFlow(int *procimg, Instruction *inst, char *exeStr,String traceFilePath
     while (!halt)
     {
         MemToInst(Mem[*(procimg +8)], inst); // update instruction field
-        // print trace func - david
+        // print trace
         failed=TracePrint(traceFilePath,inst,procimg,inst_num);
         ExecuteCmd(procimg, inst, exeStr, &halt);
         inst_num++; // instruction number increment
-        //print exeStr - david
+        //print exeStr
         failed=TraceCmdPrint(traceFilePath,exeStr);
         if(failed==true){
             break;
@@ -45,8 +45,8 @@ void MemToInst(int mem, Instruction *inst)
 
 void ExecuteCmd(int *procimg, Instruction *cmd, char *exeStr, int *halt)
 {
-	*(procimg + 1) = cmd->immediate; // put imm into R1
-	// Arithmetic funcs opcodes
+    *(procimg + 1) = cmd->immediate; // put imm into R1
+    // Arithmetic funcs opcodes
     if (cmd->opcode == ADD)
     {
         AddFunc(procimg, cmd, exeStr);
@@ -158,9 +158,9 @@ void SubFunc(int *procimg, Instruction *cmd, char *exeSrt)
         cmd->instruction = cmd->instruction & 0xFE3FFFFF; // make dst bits zero
         cmd->instruction = cmd->instruction + 0x00800000; // make bits 22-24 (dst field) to be R2 reg.
     }
-	*(procimg + cmd->dst) = *(procimg + cmd->src0) - *(procimg + cmd->src1);
-	sprintf(exeSrt, "EXEC: R[%d] = %d - %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
-	*(procimg + 8) = *(procimg + 8) + 1; // PC + 1
+    *(procimg + cmd->dst) = *(procimg + cmd->src0) - *(procimg + cmd->src1);
+    sprintf(exeSrt, "EXEC: R[%d] = %d - %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
+    *(procimg + 8) = *(procimg + 8) + 1; // PC + 1
 }
 
 void LsfFunc(int *procimg, Instruction *cmd, char *exeSrt)
@@ -171,9 +171,9 @@ void LsfFunc(int *procimg, Instruction *cmd, char *exeSrt)
         cmd->instruction = cmd->instruction & 0xFE3FFFFF; // make dst bits zero
         cmd->instruction = cmd->instruction + 0x00800000; // make bits 22-24 (dst field) to be R2 reg.
     }
-	*(procimg + cmd->dst) = *(procimg + cmd->src0) << *(procimg + cmd->src1);
-	sprintf(exeSrt, "EXEC: R[%d] = %d << %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
-	*(procimg + 8) = *(procimg + 8) + 1; // PC + 1
+    *(procimg + cmd->dst) = *(procimg + cmd->src0) << *(procimg + cmd->src1);
+    sprintf(exeSrt, "EXEC: R[%d] = %d << %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
+    *(procimg + 8) = *(procimg + 8) + 1; // PC + 1
 }
 
 void RsfFunc(int *procimg, Instruction *cmd, char *exeSrt)
@@ -184,9 +184,9 @@ void RsfFunc(int *procimg, Instruction *cmd, char *exeSrt)
         cmd->instruction = cmd->instruction & 0xFE3FFFFF; // make dst bits zero
         cmd->instruction = cmd->instruction + 0x00800000; // make bits 22-24 (dst field) to be R2 reg.
     }
-	*(procimg + cmd->dst) = *(procimg + cmd->src0) >> *(procimg + cmd->src1);
-	sprintf(exeSrt, "EXEC: R[%d] = %d >> %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
-	*(procimg + 8) = *(procimg + 8) + 1; // PC + 1
+    *(procimg + cmd->dst) = *(procimg + cmd->src0) >> *(procimg + cmd->src1);
+    sprintf(exeSrt, "EXEC: R[%d] = %d >> %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
+    *(procimg + 8) = *(procimg + 8) + 1; // PC + 1
 }
 
 void AndFunc(int *procimg, Instruction *cmd, char *exeSrt)
@@ -197,9 +197,9 @@ void AndFunc(int *procimg, Instruction *cmd, char *exeSrt)
         cmd->instruction = cmd->instruction & 0xFE3FFFFF; // make dst bits zero
         cmd->instruction = cmd->instruction + 0x00800000; // make bits 22-24 (dst field) to be R2 reg.
     }
-	*(procimg + cmd->dst) = *(procimg + cmd->src0) & *(procimg + cmd->src1);
-	sprintf(exeSrt, "EXEC: R[%d] = %d & %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
-	*(procimg + 8) = *(procimg + 8) + 1; // PC + 1
+    *(procimg + cmd->dst) = *(procimg + cmd->src0) & *(procimg + cmd->src1);
+    sprintf(exeSrt, "EXEC: R[%d] = %d & %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
+    *(procimg + 8) = *(procimg + 8) + 1; // PC + 1
 }
 
 void OrFunc(int *procimg, Instruction *cmd, char *exeSrt)
@@ -210,9 +210,9 @@ void OrFunc(int *procimg, Instruction *cmd, char *exeSrt)
         cmd->instruction = cmd->instruction & 0xFE3FFFFF; // make dst bits zero
         cmd->instruction = cmd->instruction + 0x00800000; // make bits 22-24 (dst field) to be R2 reg.
     }
-	*(procimg + cmd->dst) = *(procimg + cmd->src0) | *(procimg + cmd->src1);
-	sprintf(exeSrt, "EXEC: R[%d] = %d | %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
-	*(procimg + 8) = *(procimg + 8) + 1; // PC + 1
+    *(procimg + cmd->dst) = *(procimg + cmd->src0) | *(procimg + cmd->src1);
+    sprintf(exeSrt, "EXEC: R[%d] = %d | %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
+    *(procimg + 8) = *(procimg + 8) + 1; // PC + 1
 }
 
 void XorFunc(int *procimg, Instruction *cmd, char *exeSrt)
@@ -223,9 +223,9 @@ void XorFunc(int *procimg, Instruction *cmd, char *exeSrt)
         cmd->instruction = cmd->instruction & 0xFE3FFFFF; // make dst bits zero
         cmd->instruction = cmd->instruction + 0x00800000; // make bits 22-24 (dst field) to be R2 reg.
     }
-	*(procimg + cmd->dst) = *(procimg + cmd->src0) ^ *(procimg + cmd->src1);
-	sprintf(exeSrt, "EXEC: R[%d] = %d ^ %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
-	*(procimg + 8) = *(procimg + 8) + 1; // PC + 1
+    *(procimg + cmd->dst) = *(procimg + cmd->src0) ^ *(procimg + cmd->src1);
+    sprintf(exeSrt, "EXEC: R[%d] = %d ^ %d", cmd->dst, *(procimg + cmd->src0), *(procimg + cmd->src1));
+    *(procimg + 8) = *(procimg + 8) + 1; // PC + 1
 }
 
 void LhiFunc(int *procimg, Instruction *cmd, char *exeSrt)

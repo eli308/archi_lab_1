@@ -35,7 +35,7 @@ bool MemoryParsing(String memFilePath){
 }
 
 String GetOpName(OpCode opcode){
-    /* input: OpCode enumarate
+    /* input: OpCode enumerate
        output: OpCode string
        this function return the opcode represnted by an enum as a string
     */
@@ -80,7 +80,7 @@ String GetOpName(OpCode opcode){
 bool TracePrint(String traceFilePath, Instruction* preformedInst, int *proccesImage, int instCount) {
     /* input: 1. trace file path
               2. the performed instruction (as a struct)
-              3. the image of the proccessor (registers and PC)
+              3. the image of the processor (registers and PC)
               4. instruction number
        output: boolean indicator if the writing to file was successful
        this function prints the trace for each instruction
@@ -90,9 +90,10 @@ bool TracePrint(String traceFilePath, Instruction* preformedInst, int *proccesIm
 
     traceFile = fopen(traceFilePath, "a");
     if (traceFile != NULL) {
+        //the pc in the second line is outputted as int (due to the example given)
         fprintf(traceFile, "--- instruction %d (%04x) @ PC %d (%04x) -----------------------------------------------------------\n",
                 instCount, instCount, proccesImage[8], proccesImage[8]);
-        fprintf(traceFile, "pc = %04x, inst = %08x, opcode = %d (%s), dst = %d, src0 = %d, src1 = %d, immediate = %08x\n",
+        fprintf(traceFile, "pc = %04d, inst = %08x, opcode = %d (%s), dst = %d, src0 = %d, src1 = %d, immediate = %08x\n",
                 proccesImage[8], preformedInst->instruction, preformedInst->opcode, GetOpName(preformedInst->opcode), preformedInst->dst, preformedInst->src0,
                 preformedInst->src1, preformedInst->immediate);
         fprintf(traceFile, "r[0] = %08x r[1] = %08x r[2] = %08x r[3] = %08x\n",
