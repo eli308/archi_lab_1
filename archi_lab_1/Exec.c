@@ -12,6 +12,7 @@ bool ExecFlow(int *procimg, Instruction *inst, char *exeStr,String traceFilePath
     while (!halt)
     {
         MemToInst(Mem[*(procimg +8)], inst); // update instruction field
+		*(procimg + 1) = inst->immediate; // put imm into R1
         // print trace
         failed=TracePrint(traceFilePath,inst,procimg,inst_num);
         ExecuteCmd(procimg, inst, exeStr, &halt);
@@ -45,7 +46,7 @@ void MemToInst(int mem, Instruction *inst)
 
 void ExecuteCmd(int *procimg, Instruction *cmd, char *exeStr, int *halt)
 {
-    *(procimg + 1) = cmd->immediate; // put imm into R1
+    
     // Arithmetic funcs opcodes
     if (cmd->opcode == ADD)
     {
